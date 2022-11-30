@@ -18,7 +18,9 @@ var BookInstance = require('./models/bookinstance')
 
 
 var mongoose = require('mongoose');
-var mongoDB = userArgs[0];
+// var mongoDB = userArgs[0];
+var dev_db_url = 'mongodb+srv://antonday:antonday0507@anton-cluster.zsfb7.mongodb.net/local_library?retryWrites=true&w=majority';
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
